@@ -7,7 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faStar);
-const serverUrl = 'http://localhost:3000';
+const serverUrl = 'https://netlifylordlzerotest.netlify.app/';
 const app = createApp(App)
     app.use(pinia)
 
