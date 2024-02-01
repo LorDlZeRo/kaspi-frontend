@@ -1,0 +1,74 @@
+.breadcrumbs {
+    width: 960px;
+    height: 56px;
+    margin: 0 auto;
+}
+.procut-details {
+    width: 100%;
+}
+.item__inner {
+    width: 960px;
+    margin: 0 auto;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+    display: flex;
+}
+.item__inner-left {
+    width: 65.5%;
+    height: 100%;
+    border-right: 1px solid #e5e5e5;
+}
+.item__inner-right {
+    width: 34.5%;
+    height: 100%;
+}
+.info-main-container {
+    width: 255px;
+    height: 90%;
+    margin: 0 auto;
+}
+.info-container-top {
+    padding: 21px 0;
+}
+.info-container-middle {
+    padding: 21px 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.button-wrapper {
+    padding-top: 21px;
+}
+.info-container-bottom {
+    padding: 21px 0;
+}
+.head-text {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.tabs-content {
+    margin: 0 auto;
+    width: 960px;
+    border: 1px solid #e5e5e5;
+}
+
+.tabs-content-container {
+    width: 100%;
+    padding: 14px 20px;
+}
+
+.tabs-content-menu {
+    display: flex;
+    width: 960px;
+    margin: 0 auto;
+}
+.tabs-content-menu-list {
+    font-size: 17px;
+    padding: 9px 21px 11px;
+    color: #0089d0;
+    cursor: pointer;
+}
+._active {
+    background: #e6e6e6;
+    color: black;
+    cursor: default;
+}
