@@ -26,7 +26,7 @@ export default {
             <ul v-if="menu.mainCategories" class="main-menu-list" >
                 <li>
                     <router-link to="/get/products/?page=1" class="menu-span-text">
-                        <span> все категорий (s) </span>
+                        <span> все категорий </span>
                     </router-link>
                 </li>
                 <li v-for="item in menu.mainCategories" 
