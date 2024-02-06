@@ -4,11 +4,10 @@ import HomeViews from './components/views/HomeView.vue';
     export default {
         components: {
             HomeViews,
-},
+        },
         
     }
 
-    
 </script>
 
 <template>
