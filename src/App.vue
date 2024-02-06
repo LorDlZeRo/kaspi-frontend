@@ -1,13 +1,10 @@
 <script>
 import HomeViews from './components/views/HomeView.vue';
-import Footer from './components/views/footer/Footer.vue';
 
     export default {
         components: {
             HomeViews,
-            Footer,
 },
-
         
     }
 
@@ -15,9 +12,9 @@ import Footer from './components/views/footer/Footer.vue';
 </script>
 
 <template>
+
         <HomeViews /> 
-        <RouterView />
-        <Footer />
+  
 </template>
 
 <style lang="scss">

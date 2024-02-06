@@ -3,9 +3,11 @@ import MainHeader from './header/MainHeader.vue'
 import MainMenuVue from './menu/MainMenu.vue'
 import SearchBarSectionVue from './searchBarSection/SearchBarSection.vue'
 import useCategoriesStore from '../modelView/getCategoriesStore'
-import {ref, onMounted, handleError} from 'vue'
+import {ref, onMounted } from 'vue'
 import ChildMenu from './childMenu/ChildMenu.vue'
 import Button from './button/Button.vue'
+import Footer from './footer/Footer.vue'
+import Spinner from './spinner/Spinner.vue'
 
     export default {
         components: {
@@ -14,16 +16,17 @@ import Button from './button/Button.vue'
             SearchBarSectionVue,
             ChildMenu,
             Button,
+            Footer,
+            Spinner,
         },
 
         setup() {
-            
+
             const categories = ref(useCategoriesStore())
             onMounted(() => categories.value.getCategoris())
-            const f1 = () => console.log('!!!')
             
             return {
-                categories, f1
+                categories
             }
             
         }
@@ -32,14 +35,27 @@ import Button from './button/Button.vue'
 
 
 <template>
-    <div class="main-div">
-        <MainHeader />
+    <MainHeader />
+    <div class="" v-if="!categories.mainCategories">
+        <Spinner size="100px"/>
+    </div>
+    <div v-if="categories.mainCategories">
         <SearchBarSectionVue />
         <MainMenuVue />
         <ChildMenu v-if="categories.initialState" />
+        <RouterView />
+        <Footer />
     </div>
 </template>
-
-<style lang="scss" scoped>
-    
+<style  lang="scss" scoped>
+    .spinner-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>

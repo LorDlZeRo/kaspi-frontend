@@ -1,12 +1,9 @@
 <script>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import useCategoriesStore from '../../modelView/getCategoriesStore'
-import Spinner from '../spinner/Spinner.vue'
 
 export default {
-    components: {
-        Spinner
-    },
+
     setup() {
 
         const menu = ref(useCategoriesStore())
@@ -25,8 +22,7 @@ export default {
 <template>
     <section class="main-menu-section">
         <div class="main-menu">
-            <Spinner v-if="!menu.mainCategories" />
-            <ul v-if="menu.mainCategories" class="main-menu-list" >
+            <ul class="main-menu-list" >
                 <li>
                     <router-link to="/get/products/?page=1" class="menu-span-text">
                         <span> все категорий </span>
