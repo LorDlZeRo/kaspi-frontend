@@ -96,7 +96,8 @@ export default {
                         </div>
                     </div>
                 </div>
-                <ul class="pagination">
+       
+                <ul class="pagination" >
                     <li class="pagination__el"
                         :class="{'_disabled': parseInt(route.query.page) <= 1}"
                         @click="prevPage"
@@ -118,7 +119,6 @@ export default {
                         Следующая →
                     </li>
                 </ul>
-                
             </div>
         </div>
 

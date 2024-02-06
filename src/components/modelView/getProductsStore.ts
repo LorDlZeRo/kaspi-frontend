@@ -16,7 +16,7 @@ const useProductsStore = defineStore('products', {
         async getAllProducts(url:string): Promise<void> {
             
             try {
-                this.processData(null , 0, 0)
+                this.processData(null , this.paginationPageNumbers, this.amountPaginationPages)
                 const response = await axios.get(this.HOST + url);
       
                 this.processData(response.data.products, response.data.paginationPageNumbers, response.data.amountPaginationPages);
