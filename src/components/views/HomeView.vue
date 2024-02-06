@@ -9,7 +9,6 @@ import Button from './button/Button.vue'
 
     export default {
         components: {
-           
             MainHeader,
             MainMenuVue,
             SearchBarSectionVue,
