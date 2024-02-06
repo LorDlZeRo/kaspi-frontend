@@ -6,6 +6,7 @@ import Prices from '../prices/Prices.vue'
 import Filters from '../filters/Filters.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ref } from 'vue'
+import Spinner from '../spinner/Spinner.vue'
 
 export default {
 
@@ -14,6 +15,7 @@ export default {
         Rating,
         Prices,
         Filters,
+        Spinner,
     },
 
     setup() {
@@ -60,7 +62,7 @@ export default {
 }
 </script>
 <template>
-
+    <Spinner v-if="productsStore.allProducts.length == 0" size="100px" />
     <section class="sign-up-section">
         <div class="main-container">
             <div class="left-menu-container">
