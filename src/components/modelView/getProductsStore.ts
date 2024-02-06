@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const useProductsStore = defineStore('products', {
     state: () => ({
-        allProducts: [] as Product [],
+        allProducts: null as Product[] | null,
         HOST: 'https://netlifylordlzerotest.netlify.app/.netlify/functions/api/' as string,
         paginationPageNumbers: 0 as number,
         amountPaginationPages: 0 as number,
@@ -16,7 +16,7 @@ const useProductsStore = defineStore('products', {
         async getAllProducts(url:string): Promise<void> {
             
             try {
-                this.processData([], 0, 0)
+                this.processData(null , 0, 0)
                 const response = await axios.get(this.HOST + url);
       
                 this.processData(response.data.products, response.data.paginationPageNumbers, response.data.amountPaginationPages);
@@ -42,7 +42,7 @@ const useProductsStore = defineStore('products', {
             }   
         },
 
-       processData: function (data: Array<Product>, paginationPageNumbers:number, amountPaginationPages:number) {
+       processData: function (data: Array<Product>|null, paginationPageNumbers:number, amountPaginationPages:number) {
             this.allProducts = data 
             this.paginationPageNumbers = paginationPageNumbers
             this.amountPaginationPages = amountPaginationPages

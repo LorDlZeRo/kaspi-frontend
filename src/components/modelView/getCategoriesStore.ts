@@ -8,7 +8,7 @@ import { Category,   // interface
         
 const useCategoriesStore = defineStore('categories', {
     state: ()=> ({
-            mainCategories: [] as Category [],
+            mainCategories: null as Category [] | null,
             nestedCategories: [] as Category [],
             clonedCategories: [] as Category [],
             childCategories: [] as Category [],

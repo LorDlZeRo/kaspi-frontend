@@ -62,16 +62,18 @@ export default {
 }
 </script>
 <template>
-    <Spinner v-if="productsStore.allProducts.length == 0" size="100px" />
+    
     <section class="sign-up-section">
         <div class="main-container">
             <div class="left-menu-container">
                 <Filters />
             </div>
+            
             <div class="right-content-container">
                 <div class="breadcrumbs-container">
                     <Breadcrumbs />
                 </div>
+                <Spinner v-if="!productsStore.allProducts" size="100px" />
                 <div class="products-container">
                     <div v-for="(item, index) in productsStore.allProducts" class="product-block" :key="index">
                         <div class="item-card__sticker">
