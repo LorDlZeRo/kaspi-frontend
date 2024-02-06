@@ -9,11 +9,11 @@ import { Category,   // interface
 const useCategoriesStore = defineStore('categories', {
     state: ()=> ({
             mainCategories: null as Category [] | null,
-            nestedCategories: [] as Category [],
-            clonedCategories: [] as Category [],
-            childCategories: [] as Category [],
-            secondChildCategories: [] as Category [],
-            nameChildCategories: {} as Category,
+            nestedCategories: null as Category [] | null,
+            clonedCategories: null as Category [] | null,
+            childCategories: null as Category [] | null,
+            secondChildCategories: null as Category [] | null,
+            nameChildCategories: null as Category  | null,
             initialState: false,
     }),
 
@@ -45,14 +45,15 @@ const useCategoriesStore = defineStore('categories', {
             showNestedMenuHandler: function (event: MouseEvent) {
            
                 const id = (event.currentTarget as HTMLElement)?.id 
-
-                const foundCategory = this.mainCategories.find(elem => elem._id === id);
-                if (foundCategory !== undefined) {
-                    this.nameChildCategories = foundCategory
-                    this.childCategories =  this.getChildCategoriesByParentId(this.nestedCategories, id);
- 
-                } else {
-                    console.log('foundCategory является undefined и поэтому это ошибка');
+                if (this.mainCategories) {
+                    const foundCategory = this.mainCategories.find(elem => elem._id === id);
+                        if (foundCategory !== undefined) {
+                            this.nameChildCategories = foundCategory
+                            this.childCategories = this.nestedCategories && this.getChildCategoriesByParentId(this.nestedCategories, id);
+        
+                        } else {
+                            console.log('foundCategory является undefined и поэтому это ошибка');
+                        }
                 }
             },
             openMenu: function() { this.initialState = true },
