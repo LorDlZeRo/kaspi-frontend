@@ -15,6 +15,7 @@ const useCategoriesStore = defineStore('categories', {
             secondChildCategories: null as Category [] | null,
             nameChildCategories: null as Category  | null,
             initialState: false,
+            mobileMenuInitialState: false as Boolean,
     }),
 
 
@@ -47,10 +48,10 @@ const useCategoriesStore = defineStore('categories', {
                 const id = (event.currentTarget as HTMLElement)?.id 
                 if (this.mainCategories) {
                     const foundCategory = this.mainCategories.find(elem => elem._id === id);
+                    
                         if (foundCategory !== undefined) {
                             this.nameChildCategories = foundCategory
                             this.childCategories = this.nestedCategories && this.getChildCategoriesByParentId(this.nestedCategories, id);
-        
                         } else {
                             console.log('foundCategory является undefined и поэтому это ошибка');
                         }
