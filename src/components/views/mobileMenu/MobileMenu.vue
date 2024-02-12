@@ -27,12 +27,12 @@ import { useRouter } from 'vue-router';
     }
 </script>
 <template>
-    <ul class="button-menu-list"> 
-    <li @click="toggleMenu">  <span>{{ menuIsOpen ? 'Закрыть меню' : 'Открыть меню' }}</span> </li>
-   
-    <li @click="goTo" > Все продукты </li>
- 
-    </ul>
+    <div class="main-mobile-buttons-wrapper">
+        <ul class="main-mobile-buttons"> 
+            <li @click="toggleMenu">  <span>{{ menuIsOpen ? 'Закрыть меню' : 'Открыть меню' }}</span> </li>
+            <li @click="goTo" > Все продукты </li>
+        </ul>
+    </div>
     <div class="main-menu" :class="menuIsOpen && 'show'">
         <ul class="main-menu-list" >
             <li v-for="item in menu.mainCategories" 
@@ -54,7 +54,7 @@ import { useRouter } from 'vue-router';
 <style lang="scss" scoped>
     $menu-input-height: 65px;
     .main-menu {
-        width: 80%;
+        width: 100%;
         background-color: cadetblue;
         z-index: 1;
         position: absolute;
@@ -62,42 +62,43 @@ import { useRouter } from 'vue-router';
         transform: translateX(-100%);
         display: flex;
     }
-    .mobile-menu-wrapper{
-      
+    .main-menu-list>li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: $menu-input-height;
+        background-color: burlywood;
     }
     .button {
         margin-left: 15%;
     }
     .show {
-    transform: translateX(0); 
+        transform: translateX(0); 
     }
-
-    .button-menu-list {
-    margin: 0 auto;
-    max-width: 960px;
-    list-style: none;
-    display: flex;
-    height: $menu-input-height;
-    align-items: center;
-}
-
-    .button-menu-list > li {
+    .main-mobile-buttons-wrapper {
+        width: 100%;
+    }
+    .main-mobile-buttons {
+        margin: 0 auto;
+        width: 400px;
         display: flex;
-        align-items: center;
+        margin-bottom: 15px;
+    }
+    .main-mobile-buttons > li {
+        display: flex;
         justify-content: center;
-        flex-grow: 1;
+        align-items: center;
+  
+        width: 100%;
         height: $menu-input-height;
-        border-top: 2px solid rgb(0, 0, 0, 0);
-    }
-
-    .button-menu-list > li:first-child{
         border-left: 1px solid #e5e5e5;
+        border-top: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
     }
-
-    .button-menu-list > li:hover {
-        cursor: pointer;
-        background-color: #fff;
-        border-top: 2px solid black;
-        height: $menu-input-height;
+    .main-mobile-buttons > li:last-child {
+        border-right: 1px solid #e5e5e5;
+    }
+    .main-mobile-buttons > li:active {
+        border-top: 2px solid #000000;;
     }
 </style>
