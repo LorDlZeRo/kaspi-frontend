@@ -44,7 +44,7 @@ import { useRouter } from 'vue-router';
                 tabindex="0"
                 @click="menuHandler($event)"
             >
-                <span class="menu-span-text" > 
+                <span class="list-text" > 
                     {{item.name}}
                 </span>
             </li>
@@ -58,8 +58,6 @@ import { useRouter } from 'vue-router';
 <style lang="scss" scoped>
     $menu-input-height: 65px;
     .main-menu {
- 
-      
         z-index: 1;
         position: absolute;
         transition: transform 0.5s ease; 
@@ -67,7 +65,7 @@ import { useRouter } from 'vue-router';
         display: flex;
     }
     .main-menu-list>li {
-        width: 200px;
+        width: 35vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -96,7 +94,6 @@ import { useRouter } from 'vue-router';
         display: flex;
         justify-content: center;
         align-items: center;
-  
         width: 100%;
         height: $menu-input-height;
         border-left: 1px solid #e5e5e5;
@@ -108,5 +105,14 @@ import { useRouter } from 'vue-router';
     }
     .main-mobile-buttons > li:active {
         border-top: 2px solid #000000;;
+    }
+    .list-text {
+        flex-grow: 1; 
+        text-align: center; 
+    }
+    .mobile-child-menu-wrapper {
+        width: 100%; 
+        height: 500px;
+        overflow: auto;
     }
 </style>

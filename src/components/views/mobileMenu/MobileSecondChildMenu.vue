@@ -40,10 +40,9 @@ import { useRouter } from 'vue-router';
     .second-child-menu {
         width: 100%;
         background-color: rgb(255, 255, 255);
-        margin-left: 10px;  
     }
     .second-child-menu > li {
-        height: 50px;
+        height: 40px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -52,7 +51,6 @@ import { useRouter } from 'vue-router';
         border-right:1px solid #e5e5e5;
         border-left: 1px solid #e5e5e5;
         border-top: 1px solid #e5e5e5;
-        padding-left: 5px;
         background-color: rgb(255, 255, 255);
     }
     .second-child-menu > li:active {
