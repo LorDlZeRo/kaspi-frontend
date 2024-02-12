@@ -19,7 +19,7 @@ import { useRouter } from 'vue-router';
 
                 menu.value.openMenu()
                 menu.value.showNestedMenuHandler(event)
-                
+  
             }
 
             return { menu, menuHandler, toggleMenu, menuIsOpen, goTo }
