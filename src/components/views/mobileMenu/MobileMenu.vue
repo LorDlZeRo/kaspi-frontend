@@ -12,7 +12,10 @@ import { useRouter } from 'vue-router';
             const router = useRouter();
             const menu = ref(useCategoriesStore())
             const menuIsOpen = computed(()=> menu.value.mobileMenuInitialState) 
-            const toggleMenu = () => menu.value.mobileMenuInitialState = !menuIsOpen.value
+            const toggleMenu = () => {
+                menu.value.mobileMenuInitialState = !menuIsOpen.value
+                menu.value.childCategories = null
+            }
 
             const goTo = () => router.push('/get/products/?page=1')
             const menuHandler = (event) => {
@@ -38,6 +41,7 @@ import { useRouter } from 'vue-router';
             <li v-for="item in menu.mainCategories" 
                 :key="item._id"
                 :id="item._id"
+                tabindex="0"
                 @click="menuHandler($event)"
             >
                 <span class="menu-span-text" > 
@@ -45,7 +49,7 @@ import { useRouter } from 'vue-router';
                 </span>
             </li>
         </ul>
-        <div class="mobile-menu-wrapper">
+        <div v-if="menu.childCategories" class="mobile-child-menu-wrapper">
             <MobileChildMenu />
         </div>
     </div>
@@ -54,8 +58,8 @@ import { useRouter } from 'vue-router';
 <style lang="scss" scoped>
     $menu-input-height: 65px;
     .main-menu {
-        width: 100%;
-        background-color: cadetblue;
+ 
+      
         z-index: 1;
         position: absolute;
         transition: transform 0.5s ease; 
@@ -63,14 +67,18 @@ import { useRouter } from 'vue-router';
         display: flex;
     }
     .main-menu-list>li {
+        width: 200px;
         display: flex;
         justify-content: center;
         align-items: center;
         height: $menu-input-height;
-        background-color: burlywood;
+        background-color: #ffffff;
+        padding: 0 20px;
+        border-top: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
     }
-    .button {
-        margin-left: 15%;
+    .main-menu-list>li:focus {
+        background-color: rgb(247, 247, 247);
     }
     .show {
         transform: translateX(0); 

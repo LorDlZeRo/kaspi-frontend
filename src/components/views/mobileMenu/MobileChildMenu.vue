@@ -23,15 +23,16 @@ export default {
 <template>
 
  
-    <ul class="main-menu-list" >
+    <ul class="menu-list" >
         <li v-for="(item, index) in childCategories" 
             :key="item._id"
             :id="item._id"
             
-        >
-            <span class="menu-span-text" > 
-                {{item.name}}
-            </span>
+        >   <div class="list-text-wrapper">
+                <span class="list-text" > 
+                    <b>{{item.name}}</b>
+                </span>
+            </div>
             <MobileSecondChildMenu :id="item._id" :key="index" />
         </li>
     </ul>
@@ -39,6 +40,22 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    
+    .menu-list {
+        width: 100%;
+    }
+    .list-text-wrapper {
+        height: 50px;
+        width: 95%;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
 
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+    }
+    .list-text {
+        flex-grow: 1; 
+        text-align: center; 
+    }
+
+    
 </style>
