@@ -12,7 +12,7 @@ export default {
     setup() {
 
         const categoriesStore = ref(useCategoriesStore()) 
-        const childCategories = computed(() => categoriesStore.value.childCategories)
+        const childCategories = computed(() => categoriesStore.value.childCategories.reverse())
         const closeMenu = categoriesStore.value.closeMenu
 
     return { childCategories }
@@ -30,7 +30,7 @@ export default {
             
         >   <div class="list-text-wrapper">
                 <span class="list-text" > 
-                    <b>{{item.name}}</b>
+                    {{item.name}}
                 </span>
             </div>
             <MobileSecondChildMenu :id="item._id" :key="index" />
@@ -44,17 +44,17 @@ export default {
         width: 100%;
     }
     .list-text-wrapper {
+        width: 65vw;
         height: 50px;
-        width: 95%;
         border-top: 1px solid #e5e5e5;
         display: flex;
-
         align-items: center;
-        background-color: rgb(255, 255, 255);
+        background-color: rgb(139, 136, 136);
     }
     .list-text {
         flex-grow: 1; 
         text-align: center; 
+        color:rgb(255, 255, 255);
     }
 
     
