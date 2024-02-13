@@ -42,7 +42,7 @@ import { useRouter } from 'vue-router';
         background-color: rgb(255, 255, 255);
     }
     .second-child-menu > li {
-        height: 40px;
+        height: 50px;
         width: 100%;
         display: flex;
         justify-content: center;

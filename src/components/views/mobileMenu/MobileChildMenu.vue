@@ -10,12 +10,21 @@ export default {
     },
 
     setup() {
-
+        const isOpenedChildMenu = ref({
+            isOpened: false,
+            _id: null
+        })
         const categoriesStore = ref(useCategoriesStore()) 
-        const childCategories = computed(() => categoriesStore.value.childCategories.reverse())
-        const closeMenu = categoriesStore.value.closeMenu
+        const childCategories = computed(() => categoriesStore.value.childCategories && categoriesStore.value.childCategories.reverse())
+        const menuIsOpen = computed(()=> categoriesStore.value.mobileMenuInitialState) 
 
-    return { childCategories }
+        const handler = (event) => {
+            isOpenedChildMenu.value.isOpened = true
+            isOpenedChildMenu.value._id = event.currentTarget.id
+
+        }
+
+    return { childCategories, isOpenedChildMenu, handler, menuIsOpen }
     }
 }
 </script>
@@ -23,20 +32,20 @@ export default {
 <template>
 
  
-    <ul class="menu-list" >
+    <ul class="menu-list" v-if="!isOpenedChildMenu.isOpened && menuIsOpen">
         <li v-for="(item, index) in childCategories" 
             :key="item._id"
             :id="item._id"
-            
+            @click="handler"
         >   <div class="list-text-wrapper">
                 <span class="list-text" > 
                     {{item.name}}
                 </span>
             </div>
-            <MobileSecondChildMenu :id="item._id" :key="index" />
+            
         </li>
     </ul>
-    
+    <MobileSecondChildMenu  v-if="isOpenedChildMenu.isOpened && menuIsOpen" :id="isOpenedChildMenu._id" @click="() =>isOpenedChildMenu.isOpened "  />
 </template>
 
 <style lang="scss" scoped>
@@ -44,18 +53,19 @@ export default {
         width: 100%;
     }
     .list-text-wrapper {
-        width: 65vw;
+        width: 100vw;
         height: 50px;
         border-top: 1px solid #e5e5e5;
         display: flex;
         align-items: center;
-        background-color: rgb(139, 136, 136);
+        background-color: rgb(255, 255, 255);
     }
     .list-text {
         flex-grow: 1; 
         text-align: center; 
-        color:rgb(255, 255, 255);
     }
-
+    .menu-list>li:last-child {
+        border-bottom: 1px solid #e5e5e5;
+    }   
     
 </style>

@@ -18,7 +18,7 @@ export const getMainCategories = (categories: Array<Category>) =>
 // categories.filter(element => element.parent_id === id)
 
 export const divideArrayToColumn = (elements: Array<Category>, amountElements:number) => {
-
+        if (elements) {
             let newElements: Array<any> = []
             let slicedArray
             let column = Math.ceil(elements.length/amountElements)
@@ -33,5 +33,7 @@ export const divideArrayToColumn = (elements: Array<Category>, amountElements:nu
                 }
                 
         return newElements
+        }
+            
     
     }
