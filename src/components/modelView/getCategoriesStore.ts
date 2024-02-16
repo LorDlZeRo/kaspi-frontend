@@ -31,7 +31,6 @@ const useCategoriesStore = defineStore('categories', {
                 }
             },
             
-            
             processData: async function (data: Array<Category>): Promise<void> {
                 const clonedCategories = await deepCloneData(data);    
                 this.clonedCategories = await deepCloneData(data);
