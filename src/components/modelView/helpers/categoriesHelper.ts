@@ -34,6 +34,5 @@ export const divideArrayToColumn = (elements: Array<Category>, amountElements:nu
                 
         return newElements
         }
-            
     
     }

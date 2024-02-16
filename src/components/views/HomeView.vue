@@ -9,6 +9,7 @@ import Button from './button/Button.vue'
 import Footer from './footer/Footer.vue'
 import Spinner from './spinner/Spinner.vue'
 import MobileMenu from './mobileMenu/MobileMenu.vue'
+import MobileMenuPage from './mobileMenu/MobileMenuPage.vue'
 
     export default {
         components: {
@@ -20,7 +21,7 @@ import MobileMenu from './mobileMenu/MobileMenu.vue'
             Footer,
             Spinner,
             MobileMenu,
-            
+            MobileMenuPage,
         },
 
         setup() {
@@ -51,7 +52,7 @@ import MobileMenu from './mobileMenu/MobileMenu.vue'
         </div>
         <div class="mobile-menu-wrapper">
             <MobileMenu />
-            <!-- <MobileChildMenu /> -->
+            <MobileMenuPage />
         </div>
         <RouterView />
         <Footer />

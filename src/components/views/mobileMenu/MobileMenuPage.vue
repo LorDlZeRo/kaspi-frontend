@@ -1,62 +1,41 @@
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import useCategoriesStore from '../../modelView/getCategoriesStore'
-import MobileChildMenu from './MobileChildMenu.vue'
 import { useRouter } from 'vue-router';
-
+import MobileMenu2 from './MobileMenu2.vue';
     export default {
-        components: {
-            MobileChildMenu,
+        components:{
+            MobileMenu2
+        },
+        props: {
+
         },
         setup() {
             const router = useRouter();
-            const openChildMenu = ref(false)
+            const isChildMenuOpen = ref(false)
+
             const menu = ref(useCategoriesStore())
-            const menuIsOpen = computed(()=> menu.value.mobileMenuInitialState) 
             const toggleMenu = () => {
-                menu.value.mobileMenuInitialState = !menuIsOpen.value
-                
+                isChildMenuOpen.value = !isChildMenuOpen.value
             }
             
             const goTo = () => router.push('/get/products/?page=1')
-            const menuHandler = (event) => {
-                openChildMenu.value = true
-                menu.value.openMenu()
-                menu.value.showNestedMenuHandler(event)
-                
-            }
 
-            return { menu, menuHandler, toggleMenu, menuIsOpen, goTo, openChildMenu }
+            return { menu, toggleMenu, goTo, isChildMenuOpen, menu }
         }
     }
 </script>
 <template>
-    
-        <div class="main-mobile-buttons-wrapper">
-            <ul class="main-mobile-buttons"> 
-                <li @click="toggleMenu">  <span>{{ menuIsOpen ? 'Закрыть меню' : 'Открыть меню' }}</span> </li>
-                <li @click="goTo" > Все продукты </li>
-            </ul>
-        </div>
-        <div v-if="menu.mobileMenuInitialState">
-            <div class="main-menu" :class="menuIsOpen && 'show'" v-if="!openChildMenu">
-                <ul class="main-menu-list" >
-                    <li v-for="item in menu.mainCategories" 
-                        :key="item._id"
-                        :id="item._id"
-                        tabindex="0"
-                        @click="menuHandler($event)"
-                    >
-                        <span class="list-text" > 
-                            {{item.name}}
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div v-if="openChildMenu" class="mobile-child-menu-wrapper">
-                    <MobileChildMenu />
-            </div>
-        </div>
+    <div class="main-mobile-buttons-wrapper">
+        <ul class="main-mobile-buttons"> 
+            <li @click="toggleMenu">  <span>{{ isChildMenuOpen ? 'Закрыть меню' : 'Открыть меню' }}</span> </li>
+            <li @click="goTo" > Все продукты </li>
+        </ul>
+        <MobileMenu2 :isChildMenuOpen="isChildMenuOpen" :toggleMenu="toggleMenu" :categories="menu.clonedCategories" /> 
+
+        
+    </div>
+   
 </template>
 <style lang="scss" scoped>
     $menu-input-height: 65px;
