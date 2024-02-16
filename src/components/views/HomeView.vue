@@ -8,7 +8,6 @@ import ChildMenu from './childMenu/ChildMenu.vue'
 import Button from './button/Button.vue'
 import Footer from './footer/Footer.vue'
 import Spinner from './spinner/Spinner.vue'
-import MobileMenu from './mobileMenu/MobileMenu.vue'
 import MobileMenuPage from './mobileMenu/MobileMenuPage.vue'
 
     export default {
@@ -20,7 +19,6 @@ import MobileMenuPage from './mobileMenu/MobileMenuPage.vue'
             Button,
             Footer,
             Spinner,
-            MobileMenu,
             MobileMenuPage,
         },
 
@@ -51,7 +49,7 @@ import MobileMenuPage from './mobileMenu/MobileMenuPage.vue'
             <ChildMenu v-if="categories.initialState" />
         </div>
         <div class="mobile-menu-wrapper">
-            <MobileMenu />
+    
             <MobileMenuPage />
         </div>
         <RouterView />

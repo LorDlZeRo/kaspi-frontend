@@ -1,11 +1,11 @@
 <script>
-import { ref, computed, watch } from 'vue'
+import { ref } from 'vue'
 import useCategoriesStore from '../../modelView/getCategoriesStore'
 import { useRouter } from 'vue-router';
-import MobileMenu2 from './MobileMenu2.vue';
+import MobileMenu from './MobileMenu.vue';
     export default {
         components:{
-            MobileMenu2
+            MobileMenu
         },
         props: {
 
@@ -31,7 +31,7 @@ import MobileMenu2 from './MobileMenu2.vue';
             <li @click="toggleMenu">  <span>{{ isChildMenuOpen ? 'Закрыть меню' : 'Открыть меню' }}</span> </li>
             <li @click="goTo" > Все продукты </li>
         </ul>
-        <MobileMenu2 :isChildMenuOpen="isChildMenuOpen" :toggleMenu="toggleMenu" :categories="menu.clonedCategories" /> 
+        <MobileMenu :isChildMenuOpen="isChildMenuOpen" :toggleMenu="toggleMenu" :categories="menu.clonedCategories" /> 
 
         
     </div>
