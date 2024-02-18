@@ -8,6 +8,7 @@ import ChildMenu from './childMenu/ChildMenu.vue'
 import Button from './button/Button.vue'
 import Footer from './footer/Footer.vue'
 import Spinner from './spinner/Spinner.vue'
+import MobileMenuPage from './mobileMenu/MobileMenuPage.vue'
 
     export default {
         components: {
@@ -18,6 +19,7 @@ import Spinner from './spinner/Spinner.vue'
             Button,
             Footer,
             Spinner,
+            MobileMenuPage,
         },
 
         setup() {
@@ -36,13 +38,20 @@ import Spinner from './spinner/Spinner.vue'
 
 <template>
     <MainHeader />
+    
     <div class="" v-if="!categories.mainCategories">
         <Spinner size="100px"/>
     </div>
     <div v-if="categories.mainCategories">
         <SearchBarSectionVue />
-        <MainMenuVue />
-        <ChildMenu v-if="categories.initialState" />
+        <div class="main-menu-wrapper">
+            <MainMenuVue />
+            <ChildMenu v-if="categories.initialState" />
+        </div>
+        <div class="mobile-menu-wrapper">
+    
+            <MobileMenuPage />
+        </div>
         <RouterView />
         <Footer />
     </div>
@@ -57,5 +66,16 @@ import Spinner from './spinner/Spinner.vue'
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .mobile-menu-wrapper {
+            display: none;
+        }
+    @media only screen and (max-width: 768px) {
+        .main-menu-wrapper {
+            display: none;
+        }
+        .mobile-menu-wrapper {
+            display: block;
+        }
     }
 </style>
