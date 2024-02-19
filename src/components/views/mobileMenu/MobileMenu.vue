@@ -19,12 +19,8 @@ import { useRouter } from 'vue-router';
             const goTo = (id) => router.push({ path: '/get/products', query: { id: id, page: 1 }});
             const filteredCategories = computed(() => filterCategories(categories.value, categoriesId.value))
             
-            const getCategoryName = (categories, id) => {
-                menuListName.value = categories.filter(elem => elem._id == id)
-                console.log('!!!');
-            }
-
-            watchEffect(() => console.log(menuListName.value, 's'))
+            const getCategoryName = (categories, id) => menuListName.value = categories.filter(elem => elem._id == id)
+            watchEffect(() => getCategoryName(categories.value ,categoriesId.value))
             
         
             const menuHandler = (event) => {
@@ -36,7 +32,7 @@ import { useRouter } from 'vue-router';
                     toggleMenu.value()
                     goTo(event.currentTarget.id)
                 }
-                getCategoryName(categories.value, categoriesId.value)
+     
             }
             const back = () => {
                 isBack.value = true
@@ -73,7 +69,8 @@ import { useRouter } from 'vue-router';
                     <span @click="back"> ← </span>
                 </li>
                 <li>
-                    {{ menuListName }}
+                    <b v-if="menuListName.length > 0">{{ menuListName[0].name }}</b>
+                    <b v-else> Главное меню </b>
                 </li>
                 <li v-for="item in filteredCategories" 
                     :key="item._id"
