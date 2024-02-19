@@ -13,14 +13,22 @@ import { useRouter } from 'vue-router';
             const categoriesId = ref(0)
             const categoiresHistory = ref([])
             const isBack = ref(false)
+            const menuListName = ref('')
 
             const filterCategories = (categories, id) => categories.filter(elem => elem.parent_id == id)
             const goTo = (id) => router.push({ path: '/get/products', query: { id: id, page: 1 }});
             const filteredCategories = computed(() => filterCategories(categories.value, categoriesId.value))
             
+            const getCategoryName = (categories, id) => {
+                menuListName.value = categories.filter(elem => elem._id == id)
+                console.log('!!!');
+            }
 
+            watchEffect(() => console.log(menuListName.value, 's'))
+            
+        
             const menuHandler = (event) => {
-             
+                
                 categoriesId.value = event.currentTarget.id
                 isBack.value = false
                 if (filteredCategories.value.length === 0) {
@@ -28,6 +36,7 @@ import { useRouter } from 'vue-router';
                     toggleMenu.value()
                     goTo(event.currentTarget.id)
                 }
+                getCategoryName(categories.value, categoriesId.value)
             }
             const back = () => {
                 isBack.value = true
@@ -46,13 +55,12 @@ import { useRouter } from 'vue-router';
                     if (categoiresHistory.value.length >= 4) {
                         categoiresHistory.value.shift()
                     }
-                    console.log(categoiresHistory.value);
                 }
                 
             })
           
             return {
-              isChildMenuOpen, menuHandler, filteredCategories, back
+              isChildMenuOpen, menuHandler, filteredCategories, back, menuListName
             }
         }   
     }
@@ -61,9 +69,12 @@ import { useRouter } from 'vue-router';
     <div>
         <div class="main-menu" :class="isChildMenuOpen && 'show'">
             <ul class="main-menu-list" >
-         
-                    <span @click="back"> Назад </span>
-        
+                <li class="back">
+                    <span @click="back"> ← </span>
+                </li>
+                <li>
+                    {{ menuListName }}
+                </li>
                 <li v-for="item in filteredCategories" 
                     :key="item._id"
                     :id="item._id"
@@ -111,5 +122,8 @@ import { useRouter } from 'vue-router';
     .list-text {
         flex-grow: 1; 
         text-align: center; 
+    }
+    .back:active {
+        background-color: rgb(246, 246, 246);
     }
 </style>
