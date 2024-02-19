@@ -36,8 +36,6 @@ import MobileMenu from './MobileMenu.vue';
             :toggleMenu="toggleMenu" 
             :categories="menu.clonedCategories" 
         /> 
-
-        
     </div>
    
 </template>
