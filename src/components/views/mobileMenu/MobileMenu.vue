@@ -38,13 +38,7 @@ import { useRouter } from 'vue-router';
                 
             }
 
-            watchEffect(() => {
-                if (!isChildMenuOpen.value) {
-                    categoriesId.value = 0
-                    categoiresHistory.value = []
-                }
-                
-            })
+            watchEffect(() => categoriesId.value = 0 )
 
             watchEffect(() => {
                 if (!isBack.value) {
