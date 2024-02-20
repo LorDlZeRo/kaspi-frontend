@@ -32,7 +32,6 @@ import { useRouter } from 'vue-router';
                     toggleMenu.value()
                     goTo(event.currentTarget.id)
                 }
-     
             }
             const back = () => {
                 isBack.value = true
@@ -56,7 +55,7 @@ import { useRouter } from 'vue-router';
             })
           
             return {
-              isChildMenuOpen, menuHandler, filteredCategories, back, menuListName
+              isChildMenuOpen, menuHandler, filteredCategories, back, menuListName, categoriesId
             }
         }   
     }
@@ -65,12 +64,15 @@ import { useRouter } from 'vue-router';
     <div>
         <div class="main-menu" :class="isChildMenuOpen && 'show'">
             <ul class="main-menu-list" >
-                <li class="back">
-                    <span @click="back"> ← </span>
-                </li>
                 <li>
                     <b v-if="menuListName.length > 0">{{ menuListName[0].name }}</b>
                     <b v-else> Главное меню </b>
+                </li>
+                <li v-if="!categoriesId==0"
+                    class="back" 
+                    @click="back"
+                    >
+                    <span> ← </span>
                 </li>
                 <li v-for="item in filteredCategories" 
                     :key="item._id"
