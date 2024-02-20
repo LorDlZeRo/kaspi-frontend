@@ -65,14 +65,15 @@ import { useRouter } from 'vue-router';
         <div class="main-menu" :class="isChildMenuOpen && 'show'">
             
                 <ul class="main-menu-list" >
-                    <div 
-                    v-if="!categoriesId==0"
-                    class="back" 
-                    @click="back"
-                    >
-                    <span> ← </span>
-                </div>
+                    
                 <li @click.stop.prevent>
+                    <div 
+                        v-if="!categoriesId==0"
+                        class="back" 
+                        @click="back"
+                        >
+                        <span> ← </span>
+                    </div>
                     <span class="list-text" > 
                         <b v-if="menuListName.length > 0">{{ menuListName[0].name }}</b>
                         <b v-else> Главное меню </b>
@@ -136,8 +137,14 @@ import { useRouter } from 'vue-router';
     }
 
     .back {
-        
-        padding-left: 10px;
+        z-index: 2;
+        width: 20%;
+        border-right: 1px solid #e5e5e5;
+        top: 0;
+        left: 0;
+        height: $menu-input-height;
+        position: absolute;
+        padding-left: 30px;
         display: flex;
         align-items: center;
       
