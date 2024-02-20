@@ -63,16 +63,20 @@ import { useRouter } from 'vue-router';
 <template>
     <div>
         <div class="main-menu" :class="isChildMenuOpen && 'show'">
-            <ul class="main-menu-list" >
-                <li>
-                    <b v-if="menuListName.length > 0">{{ menuListName[0].name }}</b>
-                    <b v-else> Главное меню </b>
-                </li>
-                <li v-if="!categoriesId==0"
+            
+                <ul class="main-menu-list" >
+                    <div 
+                    v-if="!categoriesId==0"
                     class="back" 
                     @click="back"
                     >
                     <span> ← </span>
+                </div>
+                <li @click.stop.prevent>
+                    <span class="list-text" > 
+                        <b v-if="menuListName.length > 0">{{ menuListName[0].name }}</b>
+                        <b v-else> Главное меню </b>
+                    </span>
                 </li>
                 <li v-for="item in filteredCategories" 
                     :key="item._id"
@@ -91,6 +95,13 @@ import { useRouter } from 'vue-router';
 </template>
 <style lang="scss" scoped>
     $menu-input-height: 65px;
+    @mixin unselectable {
+            -webkit-user-select: none; /* Для веб-кит браузеров */
+            -moz-user-select: none; /* Для Firefox */
+            -ms-user-select: none; /* Для Internet Explorer/Edge */
+            user-select: none; /* Стандартное свойство */
+        }
+
     .main-menu {
         z-index: 1;
         position: absolute;
@@ -120,9 +131,15 @@ import { useRouter } from 'vue-router';
     }
     .list-text {
         flex-grow: 1; 
-        text-align: center; 
+        text-align: center;
+        @include unselectable;
     }
-    .back:active {
-        background-color: rgb(246, 246, 246);
+
+    .back {
+        
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+      
     }
 </style>
