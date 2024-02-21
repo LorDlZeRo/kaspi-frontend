@@ -97,10 +97,10 @@ import { useRouter } from 'vue-router';
 <style lang="scss" scoped>
     $menu-input-height: 65px;
     @mixin unselectable {
-            -webkit-user-select: none; /* Для веб-кит браузеров */
-            -moz-user-select: none; /* Для Firefox */
-            -ms-user-select: none; /* Для Internet Explorer/Edge */
-            user-select: none; /* Стандартное свойство */
+            -webkit-user-select: none;
+            -moz-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
         }
 
     .main-menu {

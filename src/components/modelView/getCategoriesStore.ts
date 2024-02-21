@@ -15,7 +15,7 @@ const useCategoriesStore = defineStore('categories', {
             secondChildCategories: null as Category [] | null,
             nameChildCategories: null as Category  | null,
             initialState: false,
-            mobileMenuInitialState: false as Boolean,
+        
     }),
 
 

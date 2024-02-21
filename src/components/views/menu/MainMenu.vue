@@ -1,12 +1,15 @@
 <script>
 import { ref } from 'vue'
 import useCategoriesStore from '../../modelView/getCategoriesStore'
+import { useRouter } from 'vue-router';
 
 export default {
 
     setup() {
 
         const menu = ref(useCategoriesStore())
+        const router = useRouter()
+        const goTo = (url) => router.push(url)
 
         const menuHandler = (event) => {
 
@@ -15,32 +18,22 @@ export default {
             
         }
 
-        return { menu, menuHandler }
+        return { menu, menuHandler, goTo }
     }
 }
 </script>
 <template>
     <section class="main-menu-section">
-        <div class="main-menu-mobile">
-            <ul class="main-menu-list">
-                <li>
-                    <router-link to="/get/products/?page=1" class="menu-span-text">
-                        <span> все категорий </span>
-                    </router-link>
-                </li>
-            </ul>
-        </div>
         <div class="main-menu">
-            <ul class="main-menu-list" >
-                <li>
-                    <router-link to="/get/products/?page=1" class="menu-span-text">
-                        <span> все категорий </span>
-                    </router-link>
+            <ul class="main-menu-list">
+                <li @click="goTo('/get/products/?page=1')">
+                    
+                        <span class="menu-span-text"> все категорий </span>
                 </li>
                 <li v-for="item in menu.mainCategories" 
                     :key="item._id"
                     :id="item._id"
-                    @click="menuHandler($event)"
+                    @mouseover="menuHandler($event)"
                 >
                     <span class="menu-span-text" > 
                         {{item.name}}

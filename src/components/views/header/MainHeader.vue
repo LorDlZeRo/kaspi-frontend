@@ -1,6 +1,12 @@
 <script>
+
 export default {
-    
+    setup() {
+
+        return {
+  
+        }
+    }
 }
 </script>
 <template>
@@ -8,7 +14,7 @@ export default {
         <section class="main-header-section">
             <div class="main-header-block">
                 <router-link to="/" class="menu-span-text">
-                    <img src="../../../assets/img/logo/logo.svg" >
+                    <img src="../../../assets/img/logo/logo.svg">
                 </router-link>
             </div>
         </section>

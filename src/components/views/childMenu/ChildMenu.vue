@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import useCategoriesStore from '../../modelView/getCategoriesStore';
 import SecondChildMenu from './secondChildMenu/SecondChildMenu.vue';
 import { divideArrayToColumn } from '../../modelView/helpers/categoriesHelper';
+import { useRouter } from 'vue-router';
 
 export default {
 
@@ -11,7 +12,7 @@ export default {
     },
 
     setup() {
-
+        const router = useRouter()
         const categoriesStore = ref(useCategoriesStore()) 
         const childMenu = computed(() => categoriesStore.value.childCategories)
         const categoriesName = computed(() => categoriesStore.value.nameChildCategories.name)
@@ -24,7 +25,7 @@ export default {
 </script>
 
 <template>
-    <section class="child-menu-section">
+    <section class="child-menu-section" @mouseleave="closeMenu" >
         <div class="childMenu">
             <h3 class="child-menu-h-text"> {{categoriesName}} </h3>
 
@@ -33,6 +34,7 @@ export default {
                     v-for="(column, columnIndex) in menuDividedToColumn2" 
                     :key="columnIndex"
                     class="column"
+                  
                 >
                     <li
                         v-for="(item, index) in column" 
@@ -42,7 +44,7 @@ export default {
                     <router-link :to="`/get/products/?id=${item._id}&page=1`">
                         <span @click="closeMenu" class="child-menu-text"> {{column ? item.name: null }} </span> 
                     </router-link>
-                        <SecondChildMenu :id="item._id" :parentIndex="index"/>
+                        <SecondChildMenu :id="item._id" :parentIndex="index" />
                     </li>
                 </ul>
             </div>
@@ -53,7 +55,7 @@ export default {
 <style lang="scss" scoped>
     .child-menu-section {
         width: 100%;
-        background-color: white;
+        background-color: rgb(251, 251, 251);
         position: absolute;
         left:50%;
         transform: translateX(-50%);

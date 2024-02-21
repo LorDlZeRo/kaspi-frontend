@@ -26,9 +26,11 @@ import MobileMenuPage from './mobileMenu/MobileMenuPage.vue'
 
             const categories = ref(useCategoriesStore())
             onMounted(() => categories.value.getCategoris())
+
+            const handler = () => categories.value.closeMenu()
             
             return {
-                categories
+                categories, handler
             }
             
         }
@@ -43,7 +45,7 @@ import MobileMenuPage from './mobileMenu/MobileMenuPage.vue'
         <Spinner size="100px"/>
     </div>
     <div v-if="categories.mainCategories">
-        <SearchBarSectionVue />
+        <SearchBarSectionVue @mouseover="handler"/>
         <div class="main-menu-wrapper">
             <MainMenuVue />
             <ChildMenu v-if="categories.initialState" />

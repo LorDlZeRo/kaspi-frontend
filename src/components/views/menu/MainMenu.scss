@@ -26,6 +26,7 @@ $menu-input-height: 65px;
     flex-grow: 1;
     height: $menu-input-height;
     border-top: 2px solid rgb(0, 0, 0, 0);
+    border-right: 1px solid #e5e5e5;
 }
 
 .main-menu-list > li:first-child{
@@ -52,14 +53,3 @@ $menu-input-height: 65px;
     user-select: none;
 }
 
-.main-menu-mobile {
-    display: none;
-}
-@media only screen and (max-width: 768px) {
-    .main-menu-mobile {
-        display: block;
-    }
-   .main-menu {
-        display: none;
-   }
-  }

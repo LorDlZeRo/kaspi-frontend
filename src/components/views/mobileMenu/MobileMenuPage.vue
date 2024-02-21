@@ -37,7 +37,7 @@ import MobileMenu from './MobileMenu.vue';
             :categories="menu.clonedCategories" 
         /> 
     </div>
-   
+    
 </template>
 <style lang="scss" scoped>
     $menu-input-height: 65px;
