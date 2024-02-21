@@ -58,7 +58,6 @@ import { divideArrayToColumn } from '../../../modelView/helpers/categoriesHelper
         
     }
     .list-text {
-        
         font-family: "Roboto",Helvetica,Arial,sans-serif;
         color: #0089d0;
         font-size: 14px;

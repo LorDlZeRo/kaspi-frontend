@@ -9,7 +9,10 @@ export default {
 
         const menu = ref(useCategoriesStore())
         const router = useRouter()
-        const goTo = (url) => router.push(url)
+        const goTo = (url) => {
+            menu.value.closeMenu()
+            router.push(url)
+        }
 
         const menuHandler = (event) => {
 
@@ -27,7 +30,6 @@ export default {
         <div class="main-menu">
             <ul class="main-menu-list">
                 <li @click="goTo('/get/products/?page=1')">
-                    
                         <span class="menu-span-text"> все категорий </span>
                 </li>
                 <li v-for="item in menu.mainCategories" 

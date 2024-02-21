@@ -3,7 +3,6 @@ import { ref, computed } from 'vue';
 import useCategoriesStore from '../../modelView/getCategoriesStore';
 import SecondChildMenu from './secondChildMenu/SecondChildMenu.vue';
 import { divideArrayToColumn } from '../../modelView/helpers/categoriesHelper';
-import { useRouter } from 'vue-router';
 
 export default {
 
@@ -12,7 +11,6 @@ export default {
     },
 
     setup() {
-        const router = useRouter()
         const categoriesStore = ref(useCategoriesStore()) 
         const childMenu = computed(() => categoriesStore.value.childCategories)
         const categoriesName = computed(() => categoriesStore.value.nameChildCategories.name)
@@ -87,6 +85,7 @@ export default {
         cursor: default;
     }
     .child-menu-text {
+        all: initial;
         margin-top: 10px;
         margin-bottom: 10px;
         margin-right: 10px;
