@@ -2,7 +2,7 @@
     <footer id="footer">
         <section class="footer">
             <div class="footer__section">
-                <div class="footer__content ">
+                <div class="footer__content">
                     <div id="Products" class="vertical-menu">
                         <span class="vertical-menu__title">Продукты Kaspi.kz</span>
                         <ul class="vertical-menu__wrapper">
@@ -225,5 +225,18 @@
 .social-media__item img {
     transition: fill .14s ease;
     opacity: .32;
+}
+
+@media screen and (max-width: 768px) {
+    .footer__content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .footer-2-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 }
 </style>
