@@ -228,6 +228,12 @@
 }
 
 @media screen and (max-width: 768px) {
+    .footer {
+        width: 100%;
+    }
+    .footer__section::before {
+        width: 100%;
+    }
     .footer__content {
         display: flex;
         flex-direction: column;

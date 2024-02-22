@@ -22,7 +22,6 @@ export default {
                         Алматы
                     </span>
                 </div>
-                
             </div>
         </div>
     </section>

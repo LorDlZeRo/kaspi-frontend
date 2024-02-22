@@ -12,10 +12,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
- 
+  
 }
 
 .main-header-block {
     width: 960px;
     height: 35px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .main-header-block {
+  
+        width: 100%;
+    }
+    .main-header-section {
+        width: 100%;
+    }
 }
