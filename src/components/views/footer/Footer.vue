@@ -230,6 +230,8 @@
 @media screen and (max-width: 768px) {
     .footer {
         width: 100%;
+        min-width: 100%;
+    
     }
     .footer__section::before {
         width: 100%;
@@ -237,12 +239,16 @@
     .footer__content {
         display: flex;
         flex-direction: column;
+    }
+    .footer__content .vertical-menu {
         width: 100%;
     }
     .footer-2-container {
         display: flex;
         flex-direction: column;
-        width: 100%;
+    }
+    .footer-2-left {
+        padding: 10px;
     }
 }
 </style>
