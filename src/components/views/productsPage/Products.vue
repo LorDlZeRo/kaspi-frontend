@@ -54,7 +54,7 @@ export default {
 
             router.push({query: currentQuery})
         }
-    
+        
         return {
             productsStore, detailsPage,currentPageNumber, prevPage, chosenPage, nextPage, route
         }
@@ -63,7 +63,7 @@ export default {
 </script>
 <template>
     
-    <section class="sign-up-section">
+    <section class="sign-up-section"  ref="scrollContainer">
         <div class="main-container">
             <div class="left-menu-container">
                 <Filters />
@@ -96,28 +96,32 @@ export default {
                         </div>
                     </div>
                 </div>
-       
-                <ul class="pagination" >
-                    <li class="pagination__el"
-                        :class="{'_disabled': parseInt(route.query.page) <= 1}"
-                        @click="prevPage"
-                        >← Предыдущая
-                    </li>
-            
-                    <li class="pagination__el"
-                        v-for="item in productsStore.paginationPageNumbers"
-                        :class="{ '_active': item === parseInt(route.query.page) }"
-                        @click="chosenPage(item)"          
-                    >
-                        {{ item }}
-                    </li>
-    
-                    <li class="pagination__el" 
-                        :class="{'_disabled': parseInt(route.query.page) == productsStore.amountPaginationPages}"
-                        @click="nextPage"
-                    >
-                        Следующая →
-                    </li>
+                
+                <ul class="pagination"  >
+                    <div>
+                        <li class="pagination__el"
+                            :class="{'_disabled': parseInt(route.query.page) <= 1}"
+                            @click="prevPage"
+                            >← Предыдущая
+                        </li>
+                    </div>
+                    <div>
+                        <li class="pagination__el"
+                            v-for="item in productsStore.paginationPageNumbers"
+                            :class="{ '_active': item === parseInt(route.query.page) }"
+                            @click="chosenPage(item)"          
+                        >
+                            {{ item }}
+                        </li>
+                    </div>
+                    <div>
+                        <li class="pagination__el" 
+                            :class="{'_disabled': parseInt(route.query.page) == productsStore.amountPaginationPages}"
+                            @click="nextPage"
+                        >
+                            Следующая →
+                        </li>
+                    </div>
                 </ul>
             </div>
         </div>
